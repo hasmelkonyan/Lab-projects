@@ -393,6 +393,15 @@ class MyLinkedList:
             cur = cur.next
             cur_pos += 1
         return self
+    
+    def erase(self, *args):
+        for each in args:
+            if not isinstance(each, Node):
+                raise TypeError
+        for each in args:
+            if self.is_in(each):
+                self.remove(each)
+        return self
 
 
 # Testing
@@ -547,3 +556,8 @@ def emplace_test():
     nd = Node("New")
     ndd = Node("Mew")
     ll1.emplace(1, nd, ndd).pr()
+    
+    
+def erase_test():
+    ll4.erase(nd7, nd9).pr()
+    

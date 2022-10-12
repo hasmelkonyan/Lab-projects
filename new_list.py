@@ -398,20 +398,3 @@ class MyLinkedList:
             raise TypeError
         if eraseble.length > self.length:
             return
-
-
-n1 = Node(5)
-n2 = Node(2)
-n3 = Node(3)
-n4 = Node(4)
-n5 = Node(5)
-n6 = Node(6)
-
-lst1 = MyLinkedList()
-lst1.append(n1)
-lst1.append(n2)
-lst1.append(n3)
-
-lst2 = MyLinkedList()
-lst2.append(n5)
-print(lst1.is_sublist(lst2))

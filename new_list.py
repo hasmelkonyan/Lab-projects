@@ -39,6 +39,19 @@ class MyLinkedList:
     def __repr__(self):
         return "object MyLinkedList"
 
+    def __str__(self):
+        if self.head is None:
+            res = '<>'
+            return res
+        res = '<'
+        res += str(self.head.data)
+        cur = self.head.next
+        while cur is not None:
+            res += ", " + str(cur.data)
+            cur = cur.next
+        res += '>'
+        return res
+
     def __len__(self):
         if not self.head:
             return 0
@@ -177,13 +190,6 @@ class MyLinkedList:
         if not isinstance(other, MyLinkedList):
             raise TypeError
         return not self < other
-
-    def pr(self):
-        """prints the linked list objects"""
-        cur = self.head
-        while cur is not None:
-            print(cur.data)
-            cur = cur.next
 
     def merge(self, other):
         """merges two linked lists"""
@@ -393,7 +399,7 @@ class MyLinkedList:
             cur = cur.next
             cur_pos += 1
         return self
-    
+
     def erase(self, *args):
         for each in args:
             if not isinstance(each, Node):
@@ -428,22 +434,24 @@ ll4.append(nd7)
 ll4.append(nd8)
 ll4.append(nd9)
 print("ll1")
-ll1.pr()
+print(ll1)
 print("ll2")
-ll2.pr()
+print(ll2)
 print("ll3")
-ll3.pr()
+print(ll3)
 print("ll4")
-ll4.pr()
+print(ll4)
 print("***********************")
+
+
 # Copy operator assignment =
 def copy_test():
     ll = ll2
-    ll.pr()
+    print(ll)
 
 
 def print_test():
-    ll1.pr()
+    print(ll1)
 
 
 # Operator is equal to ==
@@ -459,7 +467,7 @@ def is_not_equal_test():
 # Operator +
 def plus_test():
     ll = ll1 + ll2
-    ll.pr()
+    print(ll)
 
 
 # operator +=
@@ -468,7 +476,7 @@ def plus_eq_test():
     ll = MyLinkedList()
     ll.append(nd)
     ll += ll1
-    ll.pr()
+    print(ll)
 
 
 # Operator <=
@@ -498,7 +506,7 @@ def more_or_equal_test():
 
 def merge_test():
     ll1.merge(ll2)
-    ll1.pr()
+    print(ll1)
 
 
 def front_test():
@@ -507,17 +515,17 @@ def front_test():
 
 
 def reverse_test():
-    ll1.reverse().pr()
+    print(ll1.reverse())
     print("-----")
-    ll4.reverse().pr()
+    print(ll4.reverse())
 
 
 def empty_test():
-    ll2.empty().pr()
+    print(ll2.empty())
 
 
 def remove_test():
-    ll4.remove(nd8).pr()
+    print(ll4.remove(nd8))
 
 
 def remove_if_test():
@@ -525,27 +533,28 @@ def remove_if_test():
         if not isinstance(n, Node):
             raise TypeError
         return n.data % 2 == 0
-    ll4.remove_if(is_even).pr()
+
+    print(ll4.remove_if(is_even))
 
 
 def sort_test():
-    ll4.sort().pr()
+    print(ll4.sort())
 
 
 def insert_test():
     nd = Node(120)
-    ll4.insert(nd, 3).pr()
+    print(ll4.insert(nd, 3))
 
 
 def push_front_test():
     nd = Node("front")
-    ll4.push_front(nd).pr()
+    print(ll4.push_front(nd))
 
 
 def pop_front_test():
     print(ll4.pop_front().data)
     print("------")
-    ll4.pr()
+    print(ll4)
 
 
 def clear_test():
@@ -555,9 +564,8 @@ def clear_test():
 def emplace_test():
     nd = Node("New")
     ndd = Node("Mew")
-    ll1.emplace(1, nd, ndd).pr()
-    
-    
+    print(ll1.emplace(1, nd, ndd))
+
+
 def erase_test():
-    ll4.erase(nd7, nd9).pr()
-    
+    print(ll4.erase(nd7, nd9))
